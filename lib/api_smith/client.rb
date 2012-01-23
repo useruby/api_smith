@@ -113,7 +113,7 @@ module APISmith
         response = nil
         instrument_request method, full_path, options do
           response = self.class.send method, full_path, request_options
-          logger.info "API Smith:\nRequest: #{full_path}\nResponse: #{response.body}" if logger
+          logger.info "\nAPI Smith:\nRequest: #{full_path}\nResponse: #{response.body}\n" if logger
         end
         # Pre-process the response to check for errors.
         check_response_errors response

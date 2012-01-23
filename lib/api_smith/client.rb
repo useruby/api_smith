@@ -113,6 +113,7 @@ module APISmith
         response = nil
         instrument_request method, full_path, options do
           response = self.class.send method, full_path, request_options
+          logger.info "API Smith:\nRequest: #{full_path}\nResponse: #{response.body}" if logger
         end
         # Pre-process the response to check for errors.
         check_response_errors response
@@ -307,6 +308,10 @@ module APISmith
       # @return [nil, Array] the array of indices (either hash / array indices)
       #   to unpack the response via.
       def default_response_container(path, options)
+        nil
+      end
+
+      def logger
         nil
       end
 
